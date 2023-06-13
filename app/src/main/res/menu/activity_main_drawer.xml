@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="Principal">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_principal"
+                    android:icon="@drawable/icon_image"
+                    android:title="@string/menu_home" />
+                <item
+                    android:id="@+id/nav_pdf"
+                    android:icon="@drawable/icon_pdf"
+                    android:title="@string/menu_pdf" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Configuración">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_settings"
+                    android:icon="@drawable/icon_settings"
+                    android:title="@string/menu_settings" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="Compartir">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_compartir"
+                    android:icon="@drawable/icon_share"
+                    android:title="@string/menu_share" />
+            </group>
+        </menu>
+    </item>
+</menu>

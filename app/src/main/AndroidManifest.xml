@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.nick.escanertraductor">
+    <!-- PERMISOS DE CÁMARA Y TARJETA -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- PERMISOS DE INTERNET -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/icono_app_foreground"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/icono_app"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.EscanerTraductor"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <meta-data
+            android:name="com.google.mlkit.vision.DEPENDENCIES"
+            android:value="langid" >
+        </meta-data>
+        <activity
+            android:name=".activities.CropperActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.TraductorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.PdfViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ImageViewActivity"
+            android:exported="false"
+            android:label="OCR" />
+        <activity
+            android:name=".Bienvenida"
+            android:exported="true"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.EscanerTraductor.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!--
+        FileProvider es una subclase especial de ContentProvider que facilita el
+        intercambio seguro de archivos asociados con una aplicación mediante la creación de un contenido
+         // Uri para un archivo en lugar de un archivo
+        -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.nick.escanertraductor.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider> <!-- ImageCropper con yalantis -->
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+    </application>
+
+</manifest>
